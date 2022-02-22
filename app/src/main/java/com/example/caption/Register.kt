@@ -16,16 +16,16 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         auth = Firebase.auth
-        setup();
+        setup()
     }
     private fun setup(){
-        title = "Auth";
+        title = "Auth"
         val email = findViewById<EditText>(R.id.txtemail2)
         val password = findViewById<EditText>(R.id.txtPassword2)
         val password1 = findViewById<EditText>(R.id.txtPassword3)
         val sendButton = findViewById<Button>(R.id.button)
         sendButton.setOnClickListener {
-            if (email.text.isNotEmpty() && password.text.isNotEmpty() && password.text == password1.text ){
+            if (email.text.isNotEmpty() && password.text.isNotEmpty() && password.text.toString() == password1.text.toString()){
                 /*TODO firebase */
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -35,6 +35,8 @@ class Register : AppCompatActivity() {
                     }
 
                 }
+            } else{
+                error()
             }
         }
 
