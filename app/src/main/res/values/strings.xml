@@ -6,4 +6,5 @@
     <string name="indexicon">Login icon</string>
     <string name="password">Password</string>
     <string name="cpassword">Confirm Password</string>
+    <string name="logoutstr">Logout</string>
 </resources>

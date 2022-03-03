@@ -27,21 +27,29 @@ class Register : AppCompatActivity() {
         sendButton.setOnClickListener {
             if (email.text.isNotEmpty() && password.text.isNotEmpty() && password.text.toString() == password1.text.toString()){
                 /*TODO firebase */
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        showHome(it.result?.user?.email ?:"", ProviderType.BASIC)
-                    } else {
-                        error()
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString())
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            var userac:String ? = it.result?.user?.email
+                            auth.currentUser?.sendEmailVerification()
+                                ?.addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        showHome(userac , ProviderType.BASIC)
+                                    } else {
+                                        error("No se ha completado la verificacion por correo")
+                                    }
+                                }
+                        }else {
+                            error("Error al crear su usuario")
+                        }
                     }
-
-                }
             } else{
-                error()
+                error("Debe coincidir ambos campos de las contrasenas y no tener campos vacios")
             }
         }
 
     }
-    private fun showHome(email:String,provider:ProviderType){
+    private fun showHome(email:String?,provider:ProviderType){
         val homeIntent = Intent(this,Home::class.java).apply {
             putExtra("email",email)
             putExtra("provider",provider.name)
@@ -49,10 +57,10 @@ class Register : AppCompatActivity() {
         startActivity(homeIntent)
     }
 
-    private fun error() {
+    private fun error(msg:String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error")
+        builder.setMessage(msg)
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()

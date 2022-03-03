@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Caption</string>
+    <string name="login">Entrar</string>
+    <string name="register">Registrarse</string>
+    <string name="email">Correo Electronico</string>
+    <string name="indexicon">Icono de inicio</string>
+    <string name="password">Contrasena</string>
+    <string name="cpassword">Confirmar Contrasena</string>
+    <string name="logoutstr">Salir de la secion</string>
+</resources>
