@@ -1,6 +1,9 @@
 package com.example.caption
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,11 +12,14 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
+
 private lateinit var auth: FirebaseAuth
 
 class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadLocate()
         setContentView(R.layout.activity_register)
         auth = Firebase.auth
         setup()
@@ -56,7 +62,24 @@ class Register : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
-
+    private fun setLocate(languageToLoad:String?){
+        val locale = Locale(languageToLoad)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(
+            config,
+            baseContext.resources.displayMetrics
+        )
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang",languageToLoad)
+        editor.apply()
+    }
+    private fun loadLocate(){
+        val sharedpref = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedpref.getString("My_Lang","")
+        setLocate(language)
+    }
     private fun error(msg:String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")

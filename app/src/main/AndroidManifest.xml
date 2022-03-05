@@ -11,13 +11,17 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".Home"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".Register"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="locale"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

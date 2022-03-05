@@ -7,4 +7,10 @@
     <string name="password">Password</string>
     <string name="cpassword">Confirm Password</string>
     <string name="logoutstr">Logout</string>
+    <string name="idioma">Language</string>
+    <string-array name="strarr">
+        <item>------</item>
+        <item>English</item>
+        <item>Spanish</item>
+    </string-array>
 </resources>

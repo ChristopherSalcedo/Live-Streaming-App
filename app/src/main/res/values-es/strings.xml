@@ -1,10 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Caption</string>
     <string name="login">Entrar</string>
-    <string name="register">Registrarse</string>
+    <string name="register">Registrar</string>
     <string name="email">Correo Electronico</string>
-    <string name="indexicon">Icono de inicio</string>
+    <string name="indexicon">Icono de loguin</string>
     <string name="password">Contrasena</string>
     <string name="cpassword">Confirmar Contrasena</string>
-    <string name="logoutstr">Salir de la secion</string>
+    <string name="logoutstr">Salir de Sesion</string>
+    <string name="idioma">Idioma</string>
+    <string-array name="strarr">
+        <item>------</item>
+        <item>Ingles</item>
+        <item>Espanol</item>
+    </string-array>
 </resources>

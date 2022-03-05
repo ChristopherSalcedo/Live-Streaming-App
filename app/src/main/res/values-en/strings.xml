@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <resources>
+        <string name="app_name">Caption</string>
+        <string name="login">Login</string>
+        <string name="register">Register</string>
+        <string name="email">Email</string>
+        <string name="indexicon">Login icon</string>
+        <string name="password">Password</string>
+        <string name="cpassword">Confirm Password</string>
+        <string name="logoutstr">Logout</string>
+        <string name="idioma">Language</string>
+        <string-array name="strarr">
+            <item>------</item>
+            <item>English</item>
+            <item>Spanish</item>
+        </string-array>
+    </resources>
